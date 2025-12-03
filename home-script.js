@@ -334,3 +334,180 @@ document.head.appendChild(style);
 
 console.log('%c🎨 StudyPortal Bihar - Designed with love from Bihar! 💚', 'font-size: 20px; color: #FF6B35; font-weight: bold;');
 console.log('%c👨‍💻 Developed by Prabhat Kumar', 'font-size: 14px; color: #8B4513;');
+
+// Dark Mode Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  body.classList.add('dark-mode');
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+
+  // Save theme preference
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+// Current Date and Time Display with Blinking Separator
+function updateDateTime() {
+  const now = new Date();
+
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  const dayName = days[now.getDay()];
+  const day = now.getDate();
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
+
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  hours = hours.toString().padStart(2, '0');
+
+  const separator = '<span class="time-separator">:</span>';
+
+  const dateTimeString = `${dayName}, ${month} ${day}, ${year} - ${hours}${separator}${minutes}${separator}${seconds} ${ampm}`;
+
+  const dateTimeElement = document.getElementById('current-datetime');
+  if (dateTimeElement) {
+    dateTimeElement.innerHTML = dateTimeString;
+  }
+}
+
+// Update datetime every second
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+// Spotify Player Functionality
+const spotifyAuthBtn = document.getElementById('spotify-auth-btn');
+const playBtn = document.getElementById('play-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const playlistContainer = document.getElementById('playlist');
+const trackNameEl = document.getElementById('track-name');
+const trackArtistEl = document.getElementById('track-artist');
+
+// Bollywood Hindi Songs Playlist (Sample data)
+const bollywoodPlaylist = [
+  { name: 'Tum Hi Ho', artist: 'Arijit Singh', duration: '4:22' },
+  { name: 'Kun Faya Kun', artist: 'A.R. Rahman', duration: '7:07' },
+  { name: 'Channa Mereya', artist: 'Arijit Singh', duration: '4:49' },
+  { name: 'Agar Tum Saath Ho', artist: 'Alka Yagnik & Arijit Singh', duration: '5:42' },
+  { name: 'Tere Bina', artist: 'A.R. Rahman', duration: '5:45' },
+  { name: 'Kabira', artist: 'Tochi Raina & Rekha Bhardwaj', duration: '5:45' },
+  { name: 'Ilahi', artist: 'Arijit Singh', duration: '4:57' },
+  { name: 'Ae Dil Hai Mushkil', artist: 'Arijit Singh', duration: '4:29' },
+  { name: 'Gerua', artist: 'Arijit Singh & Antara Mitra', duration: '4:55' },
+  { name: 'Sooraj Dooba Hain', artist: 'Arijit Singh & Aditi Singh Sharma', duration: '4:21' },
+  { name: 'Bolna', artist: 'Arijit Singh & Asees Kaur', duration: '4:40' },
+  { name: 'Hawayein', artist: 'Arijit Singh', duration: '4:22' },
+  { name: 'Raabta', artist: 'Arijit Singh', duration: '4:03' },
+  { name: 'Soch Na Sake', artist: 'Arijit Singh & Tulsi Kumar', duration: '4:40' },
+  { name: 'Mast Magan', artist: 'Arijit Singh & Chinmayi Sripada', duration: '4:51' }
+];
+
+let currentTrackIndex = 0;
+let isPlaying = false;
+
+// Load playlist
+function loadPlaylist() {
+  playlistContainer.innerHTML = '';
+  bollywoodPlaylist.forEach((track, index) => {
+    const playlistItem = document.createElement('div');
+    playlistItem.className = 'playlist-item' + (index === 0 ? ' active' : '');
+    playlistItem.innerHTML = `
+      <i class="fas fa-music"></i>
+      <div style="flex: 1;">
+        <div style="font-weight: 600;">${track.name}</div>
+        <div style="font-size: 0.9rem; opacity: 0.8;">${track.artist}</div>
+      </div>
+      <span style="opacity: 0.7;">${track.duration}</span>
+    `;
+    playlistItem.addEventListener('click', () => selectTrack(index));
+    playlistContainer.appendChild(playlistItem);
+  });
+}
+
+// Select track
+function selectTrack(index) {
+  currentTrackIndex = index;
+  const track = bollywoodPlaylist[index];
+  trackNameEl.textContent = track.name;
+  trackArtistEl.textContent = track.artist;
+
+  // Update active playlist item
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  playlistItems.forEach((item, i) => {
+    if (i === index) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+// Play/Pause toggle
+playBtn.addEventListener('click', () => {
+  isPlaying = !isPlaying;
+  const icon = playBtn.querySelector('i');
+
+  if (isPlaying) {
+    icon.classList.remove('fa-play');
+    icon.classList.add('fa-pause');
+    playBtn.style.animation = 'pulse 1s infinite';
+  } else {
+    icon.classList.remove('fa-pause');
+    icon.classList.add('fa-play');
+    playBtn.style.animation = 'none';
+  }
+});
+
+// Previous track
+prevBtn.addEventListener('click', () => {
+  currentTrackIndex = (currentTrackIndex - 1 + bollywoodPlaylist.length) % bollywoodPlaylist.length;
+  selectTrack(currentTrackIndex);
+  if (isPlaying) {
+    const icon = playBtn.querySelector('i');
+    icon.classList.remove('fa-play');
+    icon.classList.add('fa-pause');
+  }
+});
+
+// Next track
+nextBtn.addEventListener('click', () => {
+  currentTrackIndex = (currentTrackIndex + 1) % bollywoodPlaylist.length;
+  selectTrack(currentTrackIndex);
+  if (isPlaying) {
+    const icon = playBtn.querySelector('i');
+    icon.classList.remove('fa-play');
+    icon.classList.add('fa-pause');
+  }
+});
+
+// Spotify Authentication (Mock implementation)
+spotifyAuthBtn.addEventListener('click', () => {
+  alert('🎵 Spotify integration coming soon!\n\nFor now, enjoy our curated Bollywood playlist.\n\nNote: This is a demo player. Full Spotify integration requires API credentials.');
+
+  // In a real implementation, you would redirect to Spotify OAuth:
+  // const clientId = 'YOUR_SPOTIFY_CLIENT_ID';
+  // const redirectUri = encodeURIComponent(window.location.origin);
+  // const scopes = 'streaming user-read-email user-read-private';
+  // window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
+});
+
+// Initialize playlist
+loadPlaylist();
+selectTrack(0);

@@ -869,3 +869,399 @@ body {
     font-size: 1.5rem;
   }
 }
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --primary-color: #FF8C5A;
+  --secondary-color: #FFE066;
+  --accent-color: #7FDB8F;
+  --dark-brown: #A55A2A;
+  --text-dark: #E0E0E0;
+  --text-light: #FFFFFF;
+  --bg-light: #1A1A1A;
+  --bg-white: #2D2D2D;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.5);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--text-light);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+body.dark-mode .theme-toggle i::before {
+  content: "\f185";
+}
+
+/* Date Time Display */
+.datetime-display {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 217, 61, 0.1));
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-brown);
+  box-shadow: 0 4px 15px var(--shadow);
+  animation: fadeInUp 1s ease;
+}
+
+.datetime-display i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.datetime-display .time-separator {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* IIT Kanpur Syllabus Section */
+.syllabus {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--bg-light), #FFE8CC);
+}
+
+.syllabus-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.semester-card {
+  background: var(--bg-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.3s;
+  border: 3px solid transparent;
+}
+
+.semester-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px var(--shadow-hover);
+}
+
+.semester-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.semester-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.semester-header i {
+  font-size: 2rem;
+  color: var(--secondary-color);
+}
+
+.subject-list {
+  list-style: none;
+}
+
+.subject-list li {
+  padding: 0.8rem 0;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.subject-list li:last-child {
+  border-bottom: none;
+}
+
+.subject-list li:hover {
+  color: var(--primary-color);
+  padding-left: 0.5rem;
+}
+
+.subject-list li i {
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+/* Spotify Music Player Section */
+.music-player {
+  padding: 5rem 2rem;
+  background: var(--bg-white);
+}
+
+.spotify-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.player-wrapper {
+  background: linear-gradient(135deg, #1DB954, #1ED760);
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: 0 15px 50px rgba(29, 185, 84, 0.3);
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.player-header i {
+  font-size: 3rem;
+}
+
+.player-content {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.track-art {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.track-art i {
+  font-size: 3rem;
+  color: white;
+}
+
+.track-details {
+  flex: 1;
+  color: white;
+}
+
+.track-details h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.track-details p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.play-btn {
+  width: 80px;
+  height: 80px;
+  background: white;
+  color: #1DB954;
+  font-size: 2rem;
+}
+
+.play-btn:hover {
+  background: white;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.playlist-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.playlist-container h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playlist-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.playlist-item.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-left: 4px solid var(--secondary-color);
+}
+
+.playlist-item i {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.track-number {
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.spotify-login {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.spotify-login p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.btn-spotify {
+  background: white;
+  color: #1DB954;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.btn-spotify:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.btn-spotify i {
+  font-size: 1.5rem;
+}
+
+/* Scrollbar Styling for Playlist */
+.playlist::-webkit-scrollbar {
+  width: 8px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark Mode Adjustments for Sections */
+body.dark-mode .hero {
+  background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+}
+
+body.dark-mode .features {
+  background: #1A1A1A;
+}
+
+body.dark-mode .about {
+  background: linear-gradient(135deg, #1A1A1A, #2D2D2D);
+}
+
+body.dark-mode .topics {
+  background: #1A1A1A;
+}
+
+body.dark-mode .syllabus {
+  background: linear-gradient(135deg, #1A1A1A, #2D2D2D);
+}
+
+body.dark-mode .music-player {
+  background: #1A1A1A;
+}
