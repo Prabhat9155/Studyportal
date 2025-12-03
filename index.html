@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive MCQ Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h2 id="question">Question text</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer">
+            <label for="a" id="a_text">Answer A</label>
+          </li>
+          <li>
+            <input type="radio" name="answer" id="b" class="answer">
+            <label for="b" id="b_text">Answer B</label>
+          </li>
+          <li>
+            <input type="radio" name="answer" id="c" class="answer">
+            <label for="c" id="c_text">Answer C</label>
+          </li>
+          <li>
+            <input type="radio" name="answer" id="d" class="answer">
+            <label for="d" id="d_text">Answer D</label>
+          </li>
+        </ul>
+      </div>
+      <div class="quiz-footer">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+          <span class="progress-text" id="progress-text">Question 1/10</span>
+        </div>
+        <div class="timer-container">
+          <span class="timer-text" id="timer-text">Time: 0s</span>
+        </div>
+        <button id="next">Next</button>
+      </div>
+    </div>
+    <div class="result-container" style="display: none;">
+      <h2 id="result-text">You scored 0 out of 10</h2>
+      <div class="result-summary">
+        <div class="result-item">
+          <span class="result-label">Percentage:</span>
+          <span id="percentage">0%</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Grade:</span>
+          <span id="grade">F</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Time Taken:</span>
+          <span id="time-taken">0s</span>
+        </div>
+      </div>
+      <div class="result-details" id="result-details"></div>
+      <div class="result-footer">
+        <button id="retake">Retake Quiz</button>
+        <button id="share">Share Score</button>
+      </div>
+    </div>
+    <div class="best-score-container">
+      <h3>Best Score: <span id="best-score">0</span></h3>
+    </div>
+  </div>
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
