@@ -4,10 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive MCQ Quiz</title>
+  <title>Interactive MCQ Quiz - StudyPortal Bihar</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Header with Logo and Home Button -->
+  <header class="quiz-header-top">
+    <div class="header-left">
+      <img src="logo.svg" alt="StudyPortal Bihar Logo" class="header-logo">
+      <span class="header-title">StudyPortal Bihar</span>
+    </div>
+    <a href="home.html" class="btn-home"><i class="fas fa-home"></i> Home</a>
+  </header>
+
   <div class="container">
     <div class="quiz-container">
       <div class="quiz-header">
@@ -60,14 +70,45 @@
       </div>
       <div class="result-details" id="result-details"></div>
       <div class="result-footer">
-        <button id="retake">Retake Quiz</button>
-        <button id="share">Share Score</button>
+        <button id="retake"><i class="fas fa-redo"></i> Retake Quiz</button>
+        <button id="share"><i class="fas fa-share-alt"></i> Share Score</button>
+      </div>
+      <div class="social-share" id="social-share" style="display: none;">
+        <h3>Share on Social Media</h3>
+        <div class="social-buttons">
+          <button class="social-btn facebook" data-platform="facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>
+          <button class="social-btn twitter" data-platform="twitter">
+            <i class="fab fa-twitter"></i> Twitter
+          </button>
+          <button class="social-btn linkedin" data-platform="linkedin">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </button>
+          <button class="social-btn whatsapp" data-platform="whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </button>
+          <button class="social-btn copy" data-platform="copy">
+            <i class="fas fa-copy"></i> Copy Link
+          </button>
+        </div>
       </div>
     </div>
     <div class="best-score-container">
-      <h3>Best Score: <span id="best-score">0</span></h3>
+      <h3><i class="fas fa-trophy"></i> Best Score: <span id="best-score">0</span></h3>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="quiz-footer-bottom">
+    <div class="footer-pattern"></div>
+    <p>&copy; 2025 StudyPortal Bihar. All rights reserved.</p>
+    <p class="developer-credit">
+      <i class="fas fa-code"></i> Developed with <i class="fas fa-heart"></i> by
+      <span class="developer-name">Prabhat Kumar</span>
+    </p>
+  </footer>
+
   <script src="questions.js"></script>
   <script src="script.js"></script>
 </body>

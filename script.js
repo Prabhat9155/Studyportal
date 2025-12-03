@@ -184,20 +184,59 @@ retakeBtn.addEventListener("click", () => {
 
 // Event listener for the share button
 shareBtn.addEventListener("click", () => {
-  // Create the share message
-  const shareMessage = `I scored ${score} out of 10 on the Interactive MCQ Quiz! Can you beat my score?`;
+  const socialShare = document.getElementById("social-share");
 
-  // Share the message using the Web Share API
-  if (navigator.share) {
-    navigator.share({
-      title: "Interactive MCQ Quiz",
-      text: shareMessage,
-      url: window.location.href,
-    });
+  // Toggle social share visibility
+  if (socialShare.style.display === "none" || socialShare.style.display === "") {
+    socialShare.style.display = "block";
+    socialShare.style.animation = "slideDown 0.3s ease";
   } else {
-    // Fallback for browsers that do not support the Web Share API
-    alert(shareMessage);
+    socialShare.style.display = "none";
   }
+});
+
+// Social Media Share Functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const socialButtons = document.querySelectorAll(".social-btn");
+
+  socialButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const platform = button.dataset.platform;
+      const shareText = `I scored ${score} out of 10 (${(score / 10 * 100)}%) on StudyPortal Bihar Quiz! 🎯 Can you beat my score? 📚`;
+      const shareUrl = encodeURIComponent(window.location.href);
+      const encodedText = encodeURIComponent(shareText);
+
+      let url = "";
+
+      switch(platform) {
+        case "facebook":
+          url = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${encodedText}`;
+          break;
+        case "twitter":
+          url = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodedText}`;
+          break;
+        case "linkedin":
+          url = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+          break;
+        case "whatsapp":
+          url = `https://wa.me/?text=${encodedText}%20${shareUrl}`;
+          break;
+        case "copy":
+          const textToCopy = `${shareText}\n${window.location.href}`;
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+              button.innerHTML = '<i class="fas fa-copy"></i> Copy Link';
+            }, 2000);
+          });
+          return;
+      }
+
+      if (url) {
+        window.open(url, "_blank", "width=600,height=400");
+      }
+    });
+  });
 });
 
 // Function to shuffle an array using the Fisher-Yates shuffle algorithm
@@ -208,5 +247,29 @@ function shuffle(array) {
   }
 }
 
+// Load best score from localStorage on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const bestScore = localStorage.getItem("bestScore");
+  if (bestScore) {
+    bestScoreEl.innerText = bestScore;
+  }
+});
+
 // Start the quiz when the page loads
 startQuiz();
+
+// Add slideDown animation CSS
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+document.head.appendChild(style);

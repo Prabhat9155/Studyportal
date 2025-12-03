@@ -1,0 +1,48 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Madhubani style -->
+  <circle cx="30" cy="30" r="28" fill="#FF6B35" stroke="#8B4513" stroke-width="2"/>
+
+  <!-- Inner decorative circle -->
+  <circle cx="30" cy="30" r="24" fill="none" stroke="#FFD93D" stroke-width="1.5" stroke-dasharray="2,2"/>
+
+  <!-- Book icon in center -->
+  <g transform="translate(30, 30)">
+    <!-- Open book -->
+    <path d="M -10,-6 L -10,8 L -1,6 L -1,-8 Z" fill="#FFF" stroke="#8B4513" stroke-width="1"/>
+    <path d="M 10,-6 L 10,8 L 1,6 L 1,-8 Z" fill="#FFF" stroke="#8B4513" stroke-width="1"/>
+    <path d="M -1,-8 Q 0,-10 1,-8" fill="none" stroke="#8B4513" stroke-width="1"/>
+
+    <!-- Decorative lines on pages -->
+    <line x1="-7" y1="-4" x2="-3" y2="-4" stroke="#FF6B35" stroke-width="0.5"/>
+    <line x1="-7" y1="-1" x2="-3" y2="-1" stroke="#FF6B35" stroke-width="0.5"/>
+    <line x1="-7" y1="2" x2="-3" y2="2" stroke="#FF6B35" stroke-width="0.5"/>
+    <line x1="3" y1="-4" x2="7" y2="-4" stroke="#FF6B35" stroke-width="0.5"/>
+    <line x1="3" y1="-1" x2="7" y2="-1" stroke="#FF6B35" stroke-width="0.5"/>
+    <line x1="3" y1="2" x2="7" y2="2" stroke="#FF6B35" stroke-width="0.5"/>
+  </g>
+
+  <!-- Madhubani style decorative elements -->
+  <!-- Top -->
+  <path d="M 30,3 Q 27,5 25,5 Q 23,5 23,3" fill="none" stroke="#FFD93D" stroke-width="1.5"/>
+  <path d="M 30,3 Q 33,5 35,5 Q 37,5 37,3" fill="none" stroke="#FFD93D" stroke-width="1.5"/>
+
+  <!-- Bottom -->
+  <path d="M 30,57 Q 27,55 25,55 Q 23,55 23,57" fill="none" stroke="#FFD93D" stroke-width="1.5"/>
+  <path d="M 30,57 Q 33,55 35,55 Q 37,55 37,57" fill="none" stroke="#FFD93D" stroke-width="1.5"/>
+
+  <!-- Left -->
+  <circle cx="7" cy="30" r="1.5" fill="#FFD93D"/>
+  <circle cx="4" cy="27" r="1" fill="#FFD93D"/>
+  <circle cx="4" cy="33" r="1" fill="#FFD93D"/>
+
+  <!-- Right -->
+  <circle cx="53" cy="30" r="1.5" fill="#FFD93D"/>
+  <circle cx="56" cy="27" r="1" fill="#FFD93D"/>
+  <circle cx="56" cy="33" r="1" fill="#FFD93D"/>
+
+  <!-- Corner decorations -->
+  <circle cx="10" cy="10" r="1" fill="#FFD93D"/>
+  <circle cx="50" cy="10" r="1" fill="#FFD93D"/>
+  <circle cx="10" cy="50" r="1" fill="#FFD93D"/>
+  <circle cx="50" cy="50" r="1" fill="#FFD93D"/>
+</svg>
