@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Study Hub - StudyPortal Bihar</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary-color: #FF6B35;
+  --secondary-color: #FFD93D;
+  --accent-color: #6BCF7F;
+  --dark-brown: #8B4513;
+  --text-dark: #2C3E50;
+  --text-light: #FFF;
+  --bg-light: #FFF5E6;
+  --bg-white: #FFFFFF;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --error-color: #E74C3C;
+  --success-color: #2ECC71;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--bg-light) 0%, #FFE8CC 100%);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary-color), #E85D3D);
+  color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px var(--shadow-hover);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-section i {
+  font-size: 2rem;
+}
+
+.logo-section h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--text-light);
+  color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  border: 2px solid var(--text-light);
+}
+
+.btn-secondary:hover {
+  background: var(--text-light);
+  color: var(--primary-color);
+}
+
+.btn-danger {
+  background: var(--error-color);
+  color: var(--text-light);
+}
+
+.btn-danger:hover {
+  background: #C0392B;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: var(--success-color);
+  color: var(--text-light);
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background: var(--bg-white);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Forms */
+.form-container {
+  background: var(--bg-white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.form-container h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-container p {
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--dark-brown);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.9rem;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-group input[type="file"] {
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.form-error {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.form-error.show {
+  display: block;
+}
+
+/* Materials Grid */
+.materials-section {
+  margin-top: 3rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+.filters {
+  background: var(--bg-white);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px var(--shadow);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filters input,
+.filters select {
+  padding: 0.8rem;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  font-family: inherit;
+  flex: 1;
+  min-width: 200px;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.material-card {
+  background: var(--bg-white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.3s;
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.material-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+}
+
+.material-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px var(--shadow-hover);
+}
+
+.material-card h4 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.material-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.info-item i {
+  color: var(--primary-color);
+  width: 20px;
+}
+
+.material-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.material-actions .btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Admin Dashboard */
+.admin-dashboard {
+  background: var(--bg-white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--primary-color), #E85D3D);
+  padding: 2rem;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+}
+
+.stat-card i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* User Info Display */
+.user-info {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 217, 61, 0.1));
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.user-info i {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.user-details h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.3rem;
+}
+
+.user-details p {
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-white);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow);
+}
+
+.empty-state i {
+  font-size: 5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none !important;
+}
+
+/* Alerts */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideDown 0.3s ease;
+}
+
+.alert i {
+  font-size: 1.5rem;
+}
+
+.alert-success {
+  background: rgba(46, 204, 113, 0.1);
+  border: 2px solid var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-error {
+  background: rgba(231, 76, 60, 0.1);
+  border: 2px solid var(--error-color);
+  color: var(--error-color);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-buttons {
+    justify-content: center;
+  }
+
+  .welcome-section {
+    padding: 2rem;
+  }
+
+  .welcome-section h2 {
+    font-size: 2rem;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(255, 107, 53, 0.1);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-content">
+    <div class="logo-section">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Engineering Study Hub</h1>
+    </div>
+    <div class="header-buttons" id="headerButtons">
+      <!-- Dynamic buttons will be inserted here -->
+    </div>
+  </div>
+</header>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- User Info Display -->
+  <div id="userInfoDisplay" class="hidden"></div>
+
+  <!-- Alert Messages -->
+  <div id="alertContainer"></div>
+
+  <!-- Welcome Section -->
+  <div id="welcomeSection" class="welcome-section">
+    <h2><i class="fas fa-book-reader"></i> Welcome to Engineering Study Hub</h2>
+    <p>Access and share study materials, PDFs, notes, and resources for all engineering branches and semesters. Please login or register to continue.</p>
+  </div>
+
+  <!-- Login Form -->
+  <div id="loginForm" class="form-container hidden">
+    <h3><i class="fas fa-sign-in-alt"></i> Login</h3>
+    <p>Sign in to access study materials</p>
+    <form id="loginFormElement">
+      <div class="form-group">
+        <label for="loginEmail"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        <div class="form-error" id="loginEmailError"></div>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        <div class="form-error" id="loginPasswordError"></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+  </div>
+
+  <!-- Register Form -->
+  <div id="registerForm" class="form-container hidden">
+    <h3><i class="fas fa-user-plus"></i> Register</h3>
+    <p>Create a new account to get started</p>
+    <form id="registerFormElement">
+      <div class="form-group">
+        <label for="name"><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required minlength="3">
+        <div class="form-error" id="nameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <div class="form-error" id="emailError"></div>
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-lock"></i> Password</label>
+        <input type="password" id="password" placeholder="Create a password (min. 6 characters)" required minlength="6">
+        <div class="form-error" id="passwordError"></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </form>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminDashboard" class="hidden">
+    <div class="admin-dashboard">
+      <h2 style="color: var(--primary-color); margin-bottom: 2rem;">
+        <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+      </h2>
+
+      <div class="admin-stats">
+        <div class="stat-card">
+          <i class="fas fa-file-pdf"></i>
+          <h3 id="totalMaterials">0</h3>
+          <p>Total Materials</p>
+        </div>
+        <div class="stat-card" style="background: linear-gradient(135deg, var(--accent-color), #5AB86F);">
+          <i class="fas fa-users"></i>
+          <h3 id="totalUsers">0</h3>
+          <p>Registered Users</p>
+        </div>
+        <div class="stat-card" style="background: linear-gradient(135deg, var(--secondary-color), #FFBE1D);">
+          <i class="fas fa-download"></i>
+          <h3 id="totalDownloads">0</h3>
+          <p>Total Downloads</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Form -->
+    <div class="form-container">
+      <h3><i class="fas fa-upload"></i> Upload Study Material</h3>
+      <p>Add new PDFs and study materials for students</p>
+      <form id="uploadFormElement">
+        <div class="form-group">
+          <label for="subject"><i class="fas fa-book"></i> Subject Name</label>
+          <input type="text" id="subject" placeholder="e.g., Data Structures" required>
+        </div>
+        <div class="form-group">
+          <label for="branch"><i class="fas fa-code-branch"></i> Branch</label>
+          <select id="branch" required>
+            <option value="">Select Branch</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Civil">Civil</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Chemical">Chemical</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="semester"><i class="fas fa-calendar"></i> Semester</label>
+          <select id="semester" required>
+            <option value="">Select Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pdf"><i class="fas fa-file-pdf"></i> PDF File (Max 10MB)</label>
+          <input type="file" id="pdf" accept="application/pdf" required>
+          <div class="form-error" id="pdfError"></div>
+        </div>
+        <button type="submit" class="btn btn-success" style="width: 100%;">
+          <i class="fas fa-cloud-upload-alt"></i> Upload Material
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Materials Section -->
+  <div id="materialsSection" class="materials-section hidden">
+    <div class="section-header">
+      <h2><i class="fas fa-folder-open"></i> Study Materials</h2>
+      <p>Browse and download study materials</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search by subject...">
+      <select id="branchFilter">
+        <option value="">All Branches</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Civil">Civil</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Chemical">Chemical</option>
+      </select>
+      <select id="semesterFilter">
+        <option value="">All Semesters</option>
+        <option value="1">Semester 1</option>
+        <option value="2">Semester 2</option>
+        <option value="3">Semester 3</option>
+        <option value="4">Semester 4</option>
+        <option value="5">Semester 5</option>
+        <option value="6">Semester 6</option>
+        <option value="7">Semester 7</option>
+        <option value="8">Semester 8</option>
+      </select>
+    </div>
+
+    <!-- Materials Grid -->
+    <div id="materialsGrid" class="materials-grid"></div>
+  </div>
+</div>
+
+<script src="study-hub-script.js"></script>
+
+</body>
+</html>
