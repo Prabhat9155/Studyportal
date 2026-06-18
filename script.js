@@ -90,24 +90,164 @@ nextBtn.addEventListener("click", () => {
 
   // If an answer is selected
   if (answer) {
-    // Check if the answer is correct
-    if (answer === questions[currentQuiz].correct) {
+    // Disable answer selection
+    const answerEls = document.querySelectorAll(".answer");
+    answerEls.forEach((el) => (el.disabled = true));
+
+    // Get the current question data
+    const currentQuizData = questions[currentQuiz];
+    const correctAnswerIndex = currentQuizData.correct;
+    const selectedAnswerIndex = ['a', 'b', 'c', 'd'].indexOf(answer);
+
+    // Mark the correct answer
+    const labels = document.querySelectorAll('.quiz-header label');
+    labels[correctAnswerIndex].classList.add('correct-answer');
+
+    // Check if the selected answer is correct
+    const isCorrect = selectedAnswerIndex === correctAnswerIndex;
+
+    if (isCorrect) {
       score++;
-    }
-
-    // Move to the next question
-    currentQuiz++;
-
-    // If there are more questions
-    if (currentQuiz < 10) {
-      // Load the next question
-      loadQuiz();
+      showFeedback(true, currentQuizData.explanation);
     } else {
-      // Show the results
-      showResults();
+      // Mark the wrong answer
+      labels[selectedAnswerIndex].classList.add('wrong-answer');
+      showFeedback(false, currentQuizData.explanation);
     }
+
+    // Change button text to "Next Question" or "View Results"
+    if (currentQuiz < 9) {
+      nextBtn.innerText = "Next Question";
+    } else {
+      nextBtn.innerText = "View Results";
+    }
+
+    // Wait for user to click next before moving forward
+    nextBtn.onclick = () => {
+      // Remove feedback and answer markings
+      hideFeedback();
+      labels.forEach(label => {
+        label.classList.remove('correct-answer', 'wrong-answer');
+      });
+
+      // Re-enable answer selection
+      answerEls.forEach((el) => (el.disabled = false));
+
+      // Move to the next question
+      currentQuiz++;
+
+      // If there are more questions
+      if (currentQuiz < 10) {
+        // Load the next question
+        loadQuiz();
+        nextBtn.innerText = "Submit Answer";
+        nextBtn.onclick = handleSubmit;
+      } else {
+        // Show the results
+        showResults();
+      }
+    };
   }
 });
+
+// Function to handle answer submission
+function handleSubmit() {
+  // Get the selected answer
+  const answer = getSelected();
+
+  // If an answer is selected
+  if (answer) {
+    // Disable answer selection
+    const answerEls = document.querySelectorAll(".answer");
+    answerEls.forEach((el) => (el.disabled = true));
+
+    // Get the current question data
+    const currentQuizData = questions[currentQuiz];
+    const correctAnswerIndex = currentQuizData.correct;
+    const selectedAnswerIndex = ['a', 'b', 'c', 'd'].indexOf(answer);
+
+    // Mark the correct answer
+    const labels = document.querySelectorAll('.quiz-header label');
+    labels[correctAnswerIndex].classList.add('correct-answer');
+
+    // Check if the selected answer is correct
+    const isCorrect = selectedAnswerIndex === correctAnswerIndex;
+
+    if (isCorrect) {
+      score++;
+      showFeedback(true, currentQuizData.explanation);
+    } else {
+      // Mark the wrong answer
+      labels[selectedAnswerIndex].classList.add('wrong-answer');
+      showFeedback(false, currentQuizData.explanation);
+    }
+
+    // Change button text to "Next Question" or "View Results"
+    if (currentQuiz < 9) {
+      nextBtn.innerText = "Next Question";
+    } else {
+      nextBtn.innerText = "View Results";
+    }
+
+    // Wait for user to click next before moving forward
+    nextBtn.onclick = () => {
+      // Remove feedback and answer markings
+      hideFeedback();
+      labels.forEach(label => {
+        label.classList.remove('correct-answer', 'wrong-answer');
+      });
+
+      // Re-enable answer selection
+      answerEls.forEach((el) => (el.disabled = false));
+
+      // Move to the next question
+      currentQuiz++;
+
+      // If there are more questions
+      if (currentQuiz < 10) {
+        // Load the next question
+        loadQuiz();
+        nextBtn.innerText = "Submit Answer";
+        nextBtn.onclick = handleSubmit;
+      } else {
+        // Show the results
+        showResults();
+      }
+    };
+  }
+}
+
+// Set initial button handler
+nextBtn.onclick = handleSubmit;
+nextBtn.innerText = "Submit Answer";
+
+// Function to show feedback
+function showFeedback(isCorrect, explanation) {
+  const feedbackEl = document.getElementById('answer-feedback');
+  const feedbackIcon = feedbackEl.querySelector('.feedback-icon');
+  const feedbackMessage = feedbackEl.querySelector('.feedback-message');
+  const feedbackExplanation = feedbackEl.querySelector('.feedback-explanation');
+
+  feedbackEl.classList.remove('correct', 'incorrect');
+
+  if (isCorrect) {
+    feedbackEl.classList.add('correct', 'show');
+    feedbackIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+    feedbackMessage.textContent = 'Correct! Well done!';
+  } else {
+    feedbackEl.classList.add('incorrect', 'show');
+    feedbackIcon.innerHTML = '<i class="fas fa-times-circle"></i>';
+    feedbackMessage.textContent = 'Incorrect! The correct answer is highlighted.';
+  }
+
+  feedbackExplanation.textContent = `Explanation: ${explanation}`;
+}
+
+// Function to hide feedback
+function hideFeedback() {
+  const feedbackEl = document.getElementById('answer-feedback');
+  feedbackEl.classList.remove('show', 'correct', 'incorrect');
+}
 
 // Function to show the results
 function showResults() {
@@ -273,3 +413,24 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Dark Mode Toggle for Quiz Page
+const themeToggleQuiz = document.getElementById('theme-toggle');
+if (themeToggleQuiz) {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+
+  themeToggleQuiz.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Save theme preference
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}

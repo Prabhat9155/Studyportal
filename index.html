@@ -15,7 +15,12 @@
       <img src="logo.svg" alt="StudyPortal Bihar Logo" class="header-logo">
       <span class="header-title">StudyPortal Bihar</span>
     </div>
-    <a href="home.html" class="btn-home"><i class="fas fa-home"></i> Home</a>
+    <div class="header-right">
+      <button id="theme-toggle" class="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="home.html" class="btn-home"><i class="fas fa-home"></i> Home</a>
+    </div>
   </header>
 
   <div class="container">
@@ -40,6 +45,13 @@
             <label for="d" id="d_text">Answer D</label>
           </li>
         </ul>
+      </div>
+      <div id="answer-feedback" class="answer-feedback">
+        <div class="feedback-content">
+          <span class="feedback-icon"></span>
+          <span class="feedback-message"></span>
+        </div>
+        <div class="feedback-explanation"></div>
       </div>
       <div class="quiz-footer">
         <div class="progress-container">

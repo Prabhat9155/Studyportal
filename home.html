@@ -20,6 +20,9 @@
         <li><a href="#features" class="nav-link">Features</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#" class="nav-link" id="feedback-btn">Feedback</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" title="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button></li>
       </ul>
       <div class="menu-toggle" id="mobile-menu">
         <span class="bar"></span>
@@ -34,6 +37,10 @@
     <div class="hero-pattern"></div>
     <div class="hero-content">
       <div class="hero-text">
+        <div class="datetime-display">
+          <i class="fas fa-calendar-alt"></i>
+          <span id="current-datetime"></span>
+        </div>
         <h1 class="hero-title">Welcome to StudyPortal Bihar</h1>
         <p class="hero-subtitle">Master Computer Science with Interactive MCQ Quizzes</p>
         <p class="hero-description">Inspired by Bihar's rich cultural heritage, empowering students with knowledge</p>
@@ -162,6 +169,172 @@
       </div>
       <div class="about-image">
         <div class="pattern-box"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IIT Kanpur Syllabus Section -->
+  <section class="syllabus">
+    <div class="section-header">
+      <h2 class="section-title">IIT Kanpur B.Tech CS Syllabus</h2>
+      <p class="section-subtitle">Semester-wise curriculum overview</p>
+      <div class="madhubani-divider"></div>
+    </div>
+    <div class="syllabus-container">
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 1</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Mathematics I (Calculus)</li>
+          <li><i class="fas fa-check-circle"></i> Physics I</li>
+          <li><i class="fas fa-check-circle"></i> Chemistry</li>
+          <li><i class="fas fa-check-circle"></i> Introduction to Programming</li>
+          <li><i class="fas fa-check-circle"></i> Engineering Graphics</li>
+          <li><i class="fas fa-check-circle"></i> Communication Skills</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 2</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Mathematics II (Linear Algebra)</li>
+          <li><i class="fas fa-check-circle"></i> Physics II</li>
+          <li><i class="fas fa-check-circle"></i> Electrical Engineering</li>
+          <li><i class="fas fa-check-circle"></i> Data Structures & Algorithms</li>
+          <li><i class="fas fa-check-circle"></i> Digital Logic Design</li>
+          <li><i class="fas fa-check-circle"></i> Workshop Practice</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 3</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Discrete Mathematics</li>
+          <li><i class="fas fa-check-circle"></i> Computer Organization</li>
+          <li><i class="fas fa-check-circle"></i> Object-Oriented Programming</li>
+          <li><i class="fas fa-check-circle"></i> Theory of Computation</li>
+          <li><i class="fas fa-check-circle"></i> Probability & Statistics</li>
+          <li><i class="fas fa-check-circle"></i> Economics for Engineers</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 4</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Operating Systems</li>
+          <li><i class="fas fa-check-circle"></i> Database Management Systems</li>
+          <li><i class="fas fa-check-circle"></i> Computer Networks</li>
+          <li><i class="fas fa-check-circle"></i> Design & Analysis of Algorithms</li>
+          <li><i class="fas fa-check-circle"></i> Software Engineering</li>
+          <li><i class="fas fa-check-circle"></i> Microprocessors</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 5</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Compiler Design</li>
+          <li><i class="fas fa-check-circle"></i> Artificial Intelligence</li>
+          <li><i class="fas fa-check-circle"></i> Computer Graphics</li>
+          <li><i class="fas fa-check-circle"></i> Machine Learning</li>
+          <li><i class="fas fa-check-circle"></i> Cryptography & Network Security</li>
+          <li><i class="fas fa-check-circle"></i> Elective I</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 6</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Distributed Systems</li>
+          <li><i class="fas fa-check-circle"></i> Cloud Computing</li>
+          <li><i class="fas fa-check-circle"></i> Natural Language Processing</li>
+          <li><i class="fas fa-check-circle"></i> Computer Vision</li>
+          <li><i class="fas fa-check-circle"></i> Elective II</li>
+          <li><i class="fas fa-check-circle"></i> Mini Project</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 7</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Information Retrieval</li>
+          <li><i class="fas fa-check-circle"></i> Parallel Computing</li>
+          <li><i class="fas fa-check-circle"></i> Big Data Analytics</li>
+          <li><i class="fas fa-check-circle"></i> Elective III</li>
+          <li><i class="fas fa-check-circle"></i> Elective IV</li>
+          <li><i class="fas fa-check-circle"></i> Major Project I</li>
+        </ul>
+      </div>
+      <div class="semester-card">
+        <div class="semester-header">
+          <h3>Semester 8</h3>
+          <i class="fas fa-book-open"></i>
+        </div>
+        <ul class="subject-list">
+          <li><i class="fas fa-check-circle"></i> Blockchain Technology</li>
+          <li><i class="fas fa-check-circle"></i> IoT & Embedded Systems</li>
+          <li><i class="fas fa-check-circle"></i> Elective V</li>
+          <li><i class="fas fa-check-circle"></i> Elective VI</li>
+          <li><i class="fas fa-check-circle"></i> Major Project II</li>
+          <li><i class="fas fa-check-circle"></i> Seminar & Presentation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spotify Music Player Section -->
+  <section class="music-player">
+    <div class="section-header">
+      <h2 class="section-title">Study with Music</h2>
+      <p class="section-subtitle">Hindi Bollywood Songs to enhance your learning experience</p>
+      <div class="madhubani-divider"></div>
+    </div>
+    <div class="spotify-container">
+      <div id="spotify-player" class="player-wrapper">
+        <div class="player-header">
+          <i class="fab fa-spotify"></i>
+          <span>Bollywood Study Playlist</span>
+        </div>
+        <div class="player-content">
+          <div id="track-info" class="track-info">
+            <div class="track-art">
+              <i class="fas fa-music"></i>
+            </div>
+            <div class="track-details">
+              <h4 id="track-name">Select a track to play</h4>
+              <p id="track-artist">Artist Name</p>
+            </div>
+          </div>
+          <div class="player-controls">
+            <button id="prev-btn" class="control-btn"><i class="fas fa-backward"></i></button>
+            <button id="play-btn" class="control-btn play-btn"><i class="fas fa-play"></i></button>
+            <button id="next-btn" class="control-btn"><i class="fas fa-forward"></i></button>
+          </div>
+          <div class="playlist-container">
+            <h4>Popular Bollywood Tracks</h4>
+            <div id="playlist" class="playlist"></div>
+          </div>
+        </div>
+        <div class="spotify-login">
+          <p>Connect with Spotify for personalized playlists</p>
+          <button id="spotify-auth-btn" class="btn btn-spotify">
+            <i class="fab fa-spotify"></i> Connect Spotify
+          </button>
+        </div>
       </div>
     </div>
   </section>
